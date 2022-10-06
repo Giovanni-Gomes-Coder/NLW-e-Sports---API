@@ -1,6 +1,6 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors'
-
 import { PrismaClient } from '@prisma/client'
 import { convertHourStringToMinutes } from './utils/convert-hours-string-to-minutes';
 import { convertMinutesToHourString } from './utils/convert-minutes-to-hour-string';
@@ -94,4 +94,7 @@ app.get('/ads/:id/discord', async (req, res) => {
   })
 })
 
-app.listen(3333)
+const PORT = process.env.PORT; //process.env.PORT //process.env.SERVER_PORT
+app.listen(PORT, () => {
+  console.log('🚀 server is running, listening on port -> ' + PORT)
+});
